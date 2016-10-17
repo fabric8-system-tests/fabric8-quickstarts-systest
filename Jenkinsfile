@@ -13,11 +13,11 @@ podTemplate(label: podName, containers: [
       git 'https://github.com/fabric8io/ipaas-quickstarts.git'
         
       container(name: 'maven') {
-      stage 'build'
-      sh 'mvn -B -U clean install'
-      stage 'system tests'
-      sh 'cd archetype-itests'
-      sh 'mvn clean test -Dtest.arq=true'
+        stage 'build'
+        sh 'mvn -B -U clean install'
+        stage 'system tests'
+        sh 'cd archetype-itests'
+        sh 'mvn clean test -Dtest.arq=true'
     }
   }
 }  
