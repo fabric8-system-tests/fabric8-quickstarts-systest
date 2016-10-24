@@ -14,7 +14,11 @@ podTemplate(label: podName, containers: [
         
       container(name: 'maven') {
         stage 'build'
-        sh 'chmod -R 777 /home/jenkins/.m2/repository' 
+        sh """
+        mkdir -p /home/jenkins/.m2/repository
+        chmod -R 777 /home/jenkins/.m2/repository
+        """
+
         sh 'mvn -B -U clean install'
         stage 'system tests'
         sh 'cd archetype-itests'
